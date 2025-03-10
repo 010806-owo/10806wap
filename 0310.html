@@ -5,7 +5,7 @@
  <style>
      #d1{
 	      width:300px;
-		  heght:100px;
+		  height:100px;
 		  background-color:#999999;
 		}
 		/* css color 
@@ -15,17 +15,82 @@
 		   4.rgba(r,g,b,a 0~1)
 		   5.hsl(色相0~360,彩度0~100%,亮度0~%)
 		     */
-			 
- 
- 
- 
- 
+
+		.grad{
+			width:300px;
+			height:100px;
+			margin:10px 0px;
+			border:1px solid black;
+		}
+	    #d2{
+			background:linear-gradient(red,yellow);
+			
+		}
+		#d3{/* top right bottom left, or 0~360deg */
+			background: linear-gradient(90deg,red,orange,yellow);
+
+		}
+		#d4{
+			background:linear-gradient(90deg,red 30%,white 30%,biue 30%);
+		}
+		#d5{
+			background:repeating-linear-gradient(45deg,red 45%,white 55%);
+		}
+		#r1{
+			background:radial-gradient(yellow,white,black);
+		}
+		#r2{
+			background: radial-gradient(circle,white 30%,black);
+		}
+		#r3{
+			background: repeating-linear-gradient(circle,gray 30%,white 35%,gray 40%);
+		}
+		#c1{
+			background: conic-gradient(from 60deg,red,green,biue,red)
+		}
+		#c2{
+			background: conic-gradient(red 10%,white 15%,biue,red 20%)
+		}
+		#c3{
+			background:repeating-conic-gradient(red 10%,white 15%,red 20%)
+		}
+		.anim{
+			width:300px;
+			height: 200px;
+			margin:10px 0px;
+		}
+		#a1{
+			background:repeating-linear-gradient(45deg,red 45%,white 55%);
+		}
+		@keyframes k1{
+			0% {background:repeating-linear-gradient(45deg,red 45%,white 55%,red 55%);}
+			50% {background:repeating-linear-gradient(45deg,white 45%,red 55%,white 55%);}
+			100% {background:repeating-linear-gradient(45deg,red 45%,white 55%,red 55%);}
+		
+		}
+
  
  </style>
 
 
 </head>
+<body>
+	<div id="d1"></div>
+	<div id="d2" class="grad"></div>
+	<div id="d3" class="grad"></div>
+	<div id="d4" class="grad"></div>
+	<div id="d5" class="grad"></div>
+	<div id="r1" class="grad"></div>
+	<div id="r2" class="grad"></div>
+	<div id="r3" class="grad"></div>
+	<div id="c1" class="grad"></div>
+	<div id="c2" class="grad"></div>
+	<div id="c3" class="grad"></div>
+	<hr>
+	<div id="a1" class=".anim"></div>
 
+
+</body>
 
 
 
