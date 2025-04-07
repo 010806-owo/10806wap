@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <title>>0331筆記-JavaScript事件</title>
+        <meta charset="'UTF-8">
+        <style>
+            #mouseCanvas{
+                width:600px;
+                height:600px;
+                border:1px solid black;
+            }
+
+
+        </style>
+        <script>
+             
+             function btnClick1() {
+                alert("按紐被按下")
+            }
+            
+            function btnClick2(btn) {
+                alert(btn.innerHTML+"被按下");
+            }
+            //--------------------------
+            function msMove(){
+                msPos=document.getElementById("mousePos")
+                //msPos.innerHTML="(event.x+","+event.y+")";
+                msPos.innerHTML=`(${event.offsetX},${event.offsetY})`;
+            }
+            /*
+            function mEnter() { console.log("enter")}
+            function mLeave() { console.log("leave")}
+            function mOver() { console.log("over")}
+            function mOut() { console.log("out")}
+            function mMove() { console.log("move")}
+
+            function mUp() { console.log("up")}
+            function mDown() { console.log("down")}
+            function mWheel() { console.log("wheel")}
+            function mdvClick() { console.log("click")}
+            */
+            //--------------------------
+            function kbdown() {
+                kbOut=document.getElementById("kbOut")
+                kbout.innerHTML=event.key;
+            }
+            function kbPress() {console.log("kbpress");}
+            //function kbup() {console.log("kbup");}
+            //---------------------------
+            function ready() {
+                console.log("page ready!");
+            }
+
+            
+        </script>
+    </head>
+    <body onload="pageReady();">
+        <button onclick="btnClick1();">按鈕</button>
+        <button onclick="btnClick2(this);">按鈕1</button>
+        <button onclick="btnClick2(this);">按鈕2</button>
+        <hr>
+        <div id="mousePos">(x,y)</div>
+        <div id="mouseCanvas" onmousemove="msMove();" onmouse></div>
+        <!--
+        onmouseEnter="mEnter"; onmouseLeave="mLeave"; onmouseOver="mOver"; onmouseOut="mOut";
+        onmouseMove="mMove"; onmouseUp="mUp"; onmouseDown="mDown"; onmouseWhell="mWhell"; onclick="dvClick";
+        -->
+        <hr>
+        <input type="text" id="kbIn" placeholder="kbIn" onkeydown="kbDown();"
+        <div id="kbOut">kbOut</div>
+    </body>
+    <script>
+        console.log("page loading")
+    </script>
+</html>
