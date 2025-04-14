@@ -1,0 +1,39 @@
+<html>
+<head>
+    <title>0414-JS Timer</title>
+<style>
+
+
+</style>
+<script>
+    function func2(){
+       console.log("func2");
+    }
+    function func1(){
+        console.lof("func1-1");
+        t1=setInterval(func2,2000);
+        console.log("func1-2");
+    }
+    //-------------------------------------------//
+    function Timerstart() {
+        time=0;
+        mm=time/60;
+        ss=time%60;
+        mm=(mm>9)?mm:"0"+mm;
+        ss=(ss>9)?ss:"0"+ss;
+        time++;
+        document.getElementById("timer").innerHTML=` ${MM}:${ss}`;
+    },1000);
+ }
+function timerStop() {
+    isset(t1)?clearInterval(t1):alert("尚未開始計時!");
+
+}
+</script>
+</head>
+<body>
+    <button onlick="func1(t1);">計時</button>
+</body>
+
+
+</html>
