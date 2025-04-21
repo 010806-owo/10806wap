@@ -1,0 +1,68 @@
+<html>
+<head>
+    <title>翻牌遊戲</title>
+    <meta charset="UTF-8">
+    <style>
+        #aboard {
+            display: grid;
+            grid: repeat(3,90px)/repeat(4,90px);
+        }
+
+
+    </style>
+    <script>
+        function gameInit() {
+            cards=[1,1,2,2,3,3,4,4,5,5,6,6];
+            var b=document.getElementById("board");
+            for(i=0;i<cards.length;i++){
+            var a=document.createAttribute("img");
+            a.addEventListener("click",picking);
+            a.ClassName="card";
+            a.src=`pic/0.png`;
+            b.appendChild(a);
+            }
+            
+            imgs=Array.form(document.getElementsByClassName("card"));
+            gamestarting=false;
+        }
+            function gamestart() {
+                cards.sort((a,b)=>(Math.random()-0.5));
+                for(i=0;i<imgs.length;i++) {
+                    imgs[i].src=`pic/${cards[i]}.png`;
+                }
+                setTimeout(function(){
+                    imgs.forEach(img=>{imf.src="pic/0.png";});
+                },3000);
+                gamestarting=ture;
+            }
+            function picking(){
+                if(!gamestarting)return;
+                img=event.target;
+                idx=imgs.indexOf(img);
+                img.src=`pic/${cards[idx]}.png`;
+                if(p1==0) {
+                    p1=idx;
+                }else{
+                    p2=idx;
+                    img.src=`plc/${cards[idx]}.png`;
+                    if(cards[p1]!=cards[p2]) {
+                        setIimeout(function() {
+                            img[p1].src="pic/0.png"
+                            img[p2].src="pic/0.png"
+                            p1=-1;p2=-1;
+                        },1000);
+                    }
+                }
+            }
+                console.log(p1);
+                console.log(p1);
+                
+
+    </script>
+
+</head>
+<body onload="gameInit();">
+    <div id="board"></div>
+    <button onclick="gamestart();">遊戲開始</button>
+</body>    
+</html>
