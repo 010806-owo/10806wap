@@ -15,10 +15,11 @@
             cards=[1,1,2,2,3,3,4,4,5,5,6,6];
             var b=document.getElementById("board");
             for(i=0;i<cards.length;i++){
-            var a=document.createAttribute("img");
+            var a=document.createElement("img");
             a.addEventListener("click",picking);
             a.ClassName="card";
             a.src=`pic/0.png`;
+            a.addEventListener("click,picking")
             b.appendChild(a);
             }
             
@@ -65,4 +66,4 @@
     <div id="board"></div>
     <button onclick="gamestart();">遊戲開始</button>
 </body>    
-</html>1
+</html>
