@@ -12,6 +12,9 @@
             font-family: Arial,Helvetica,sans-serif;
             position: relative;
         }
+         red {
+            color: red;
+         }
     </style>
     <script>
         function kbDown() {
@@ -19,8 +22,20 @@
             event.preventDefault();
             if(event.key=="Enter") {
                 input="";
+            } else if(event.key="backspace") {
+                   
             }else if(event.key.lenfth == 1){
+                input+=event.key.charCodeAt(0);
+                if((code>=65 && code<=90) || (code>=97 && code<=122))
                 input+=event.key;
+            words=Array.from(document.getElementsByClassName("word"));
+            words.filter(function(w) {
+                return w.innerText.startsWith(input);
+            }).ForEach(function(w){
+                w.innerHTML=`<mark>${input}</mrak>`+ w.innerText.subsstr(input.length);
+            });    
+            }
+            
               
             }
 
@@ -28,7 +43,7 @@
             function rand(min,max) {
                 return Math.floor(Math.random()*(max-min+1))+min;
             }
-        }
+        
         function genWord() {
             /*
             var wordlist=["hello","apple","banana","cake"]
@@ -69,6 +84,7 @@
 
 </head>
 <body onkeydown="kbDown();">
+    <div id="status" style="display: none;"></div>
     <button id="btnStart" onclick="gameStart();">遊戲開始</button>
 </body>
 </html>
