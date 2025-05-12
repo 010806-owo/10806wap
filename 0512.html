@@ -1,0 +1,83 @@
+<html>
+<head>
+    <title>0512精靈圖</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            background-image: url("pic/grass.jpg");
+            background-size: 200px 140px;
+            position: relative;
+        }
+        #role{
+            width:48px;
+            height: 72px;
+            background: url("pic/sprite1.png");
+            background-position-y: -288px;
+            animation: walking 1s steps(3) infinite;
+            position: absolute;
+
+        }
+        @keyframes walking{
+            0%{background-position-x: 0;}
+            100%{background-position-x: -144px;}
+        }
+    </style>
+    <script>
+        function gameIniit() {
+            role=document.getElementById("role");
+            role.pos={x:24, y:72};
+            role.dir=0; /*ArroDown*/
+            role.move=setInterval(function(){
+                if(role.pos.x< role.walkTarget.x) {
+                    role.pos.x++;
+                    role.faceTo=2;
+                }else if(role.pos.x > role.walkTarget.x){
+                    role.pos.x--;
+                    role.faceTo=1;
+                }else if(role.pos.y > role.walkTarget.y){
+                    role.pos.y++;
+                    role.faceTo=0;
+                }else if(role.pos.y > role.walkTarget.y) {
+                    role.pos.y--;
+                    role.faceTo=3;
+                } else {
+                    role.faceTo=0;
+                }
+                role.style.left=role.walkTarget.x+"px";
+                role.style.top=role.walkTarget.y+"px";
+                role.style.backgroundPositionY=`-${role.faceTo*72}px`;
+            },50);
+        }
+        function mykeydown() {
+            event.preventDefault();
+            var key=event.key;
+            var dir=["ArrowDown","ArrowUp","ArrowRight","ArrowLeft"];
+            var dx=[0,-1,1,0];
+            var dy=[1,0,0,-1];
+            if(dir.includes(key)) {
+                role.mydir=dir.indexOf(key);
+                role.style.backgroundPositionY=`-${role.faceTo* 72}px`;
+                /*role.style.backgroundPositionY=(dir.indexOf(key)*72)+"px";*/
+                role.faceTo=dir.indexOf(key);
+                role.style.backgroundPositionY=`-${role.faceTo*72}px`;
+                role.walkTarget.x += dx[role.faceTo];
+                role.walkTarget.y += dy[role.faceTo];
+            }
+            /*
+            if(key=="ArrowDown") {
+                role.style.backgroundPositionY="0px";
+            } else if(key=="ArrowLeft") {
+                role.style.backgroundPositionY="-72px";
+            } else if(key=="ArrowRight") {
+                role.style.backgroundPositionY="-144px";
+            } else if(key=="ArrowUp") {
+                role.style.backgroundPositionY="-216px";
+            }
+                */
+        }
+    </script>
+</head>
+<body onload="gameInit()" onkeydown="mykeydown()">
+    <div id="role"></div>
+</body>
+</html>
