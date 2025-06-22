@@ -1,1 +1,36 @@
-git
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>猜數字遊戲</title>
+</head>
+<body>
+  <h1>猜數字遊戲</h1>
+  <p>從 1 到 100 的數字猜出一個吧！</p>
+  <input type="number" id="guess" placeholder="輸入你的答案">
+  <button onclick="checkGuess()">猜！</button>
+  <p id="result"></p>
+
+  <script>
+    const answer = Math.floor(Math.random() * 100) + 1;
+    let attempts = 0;
+
+    function checkGuess() {
+      const guess = parseInt(document.getElementById("guess").value);
+      attempts++;
+      let message = "";
+
+      if (guess === answer) {
+        message = `恭喜你猜對了！答案是 ${answer}，你猜了 ${attempts} 次！`;
+      } else if (guess < answer) {
+        message = "太小了，再試一次！";
+      } else if (guess > answer) {
+        message = "太大了，再試一次！";
+      } else {
+        message = "請輸入有效的數字";
+      }
+
+      document.getElementById("result").textContent = message;
+    }
+  </script>
+</body>
+</html>
